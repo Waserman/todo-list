@@ -1,0 +1,39 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "A to do list application - React + Redux",
+  "main": "server.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Waserman/todo-list.git"
+  },
+  "author": "Avi Waserman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Waserman/todo-list/issues"
+  },
+  "homepage": "https://github.com/Waserman/todo-list#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.13.7",
+    "normalize.css": "^7.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "reselect": "^3.0.1",
+    "thunk": "0.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6"
+  }
+}

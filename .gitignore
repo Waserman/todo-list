@@ -1,0 +1,13 @@
+# ignore idea phpstorm directory
+.idea/
+.vscode
+
+# node modules
+node_modules/
+
+*.log
+
+alias_assets/
+
+.DS_Store
+sessions/
