@@ -58,6 +58,6 @@ app.use((err, req, res, next) => {
 app.listen(process.env.PORT || 9090, (err) => {
   if (!err) {
     console.log('server runing on port ' + process.env.PORT)
-    open('http://localhost:9090/')
+    open('http://127.0.0.1:9090/')
   }
 })

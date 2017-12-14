@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Waserman/todo-list#readme",
   "dependencies": {
+    "antd": "^3.0.1",
+    "axios": "^0.17.1",
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -37,7 +39,9 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
+    "rodal": "^1.6.3",
     "style-loader": "^0.19.1",
     "thunk": "0.0.1",
     "url-loader": "^0.6.2",
@@ -45,6 +49,7 @@
     "webpack-hot-middleware": "^2.21.0"
   },
   "devDependencies": {
+    "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
