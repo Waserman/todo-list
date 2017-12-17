@@ -5,7 +5,7 @@ const TaskSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  compoleted: {
+  completed: {
     type: Boolean,
     default: false
   }

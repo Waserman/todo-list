@@ -48,10 +48,9 @@ function list(req, res, next) {
 }
 
 function update(req, res, next) {
-  const task = req.task
-  const updatedTask = Object.assign({}, task, req.body)
+  let task = Object.assign(req.task,req.body)
 
-  updatedTask.save()
+  task.save()
     .then(() => res.json({status: 'success'}))
     .catch(e => next(e))
 }

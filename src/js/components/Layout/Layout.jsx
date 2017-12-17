@@ -32,7 +32,6 @@ class Layout extends Component {
   }
 
   saveTask = (body) => {
-    console.log('save: ' + JSON.stringify(body))
     this.props.saveTask(body)
     this.hide()
   }

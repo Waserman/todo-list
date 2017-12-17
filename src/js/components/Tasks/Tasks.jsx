@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { fetchTasks } from '../../store/actions/todosActions'
+import { fetchTasks, completeTask } from '../../store/actions/todosActions'
 
 import { Button, Icon } from 'antd'
+import TaskList from './TaskList/TaskList'
 
 class Tasks extends Component {
   constructor(props) {
@@ -15,18 +16,17 @@ class Tasks extends Component {
   componentDidMount() {
     this.props.uploadTasksFromRemoteServer()
   }
+  
+  onTaskComplete = (e, id) => {
+    this.props.completeTask({id, completed: e.target.checked})
+  }
 
   render() {
-
-    let listItems = this.props.todos.map((item, i) => {
-      return <li key={i}>{item.body}</li>
-    })
     return (
       <div>
-        <ul>
-          {listItems}
-        </ul>
+        <TaskList todos={this.props.todos} onTaskComplete={this.onTaskComplete}/>
         <Button
+          style={{marginTop: '10px'}}
           htmlType="button"
           shape="circle"
           size="large"
@@ -47,7 +47,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    uploadTasksFromRemoteServer: bindActionCreators(fetchTasks, dispatch)
+    uploadTasksFromRemoteServer: bindActionCreators(fetchTasks, dispatch),
+    completeTask: bindActionCreators(completeTask, dispatch)
   }
 }
 

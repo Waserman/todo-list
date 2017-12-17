@@ -18,6 +18,7 @@ export const fetchTasks = () => {
 }
 
 export const saveTask = (body) => {
+  debugger
   return async (dispatch) => {
     try {
       const { status } = await axios.post('/api/tasks', qs.stringify({'body': body}))
@@ -25,8 +26,26 @@ export const saveTask = (body) => {
       if (status == 200) {
         dispatch({type: actionTypes.ADD_TODO, payload: {body}})
       }
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+export const completeTask = ({id, completed}) => {
+  return async (dispatch, getState) => {
+    const {todos} = getState()
+
+    let task = todos.find(item => {
+      return item._id === id
+    })
+
+
+    try {
+      const {data} = axios.put('/api/tasks/'+id, qs.stringify({'completed': completed, 'body': task.body}))
+      dispatch({type: actionTypes.COMPLETE_TODO, payload: {id, completed}})
+    } catch (err) {
+      console.log(err)
     }
   }
 }

@@ -7,11 +7,11 @@ router.route('/')
   .get(taskCtrl.list)
   .post(taskCtrl.create)
 
-router.route('/:taskId')
+router.route('/:id')
   .get(taskCtrl.get)
   .put(taskCtrl.update)
   .delete(taskCtrl.remove)
 
-router.param('taskId', taskCtrl.load)
+router.param('id', taskCtrl.load)
 
 module.exports = router
