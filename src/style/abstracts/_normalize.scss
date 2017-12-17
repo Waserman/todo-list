@@ -1,0 +1,42 @@
+@import '~normalize.css/normalize';
+html {
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  direction: $app-direction;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  direction: inherit;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: $font-family;
+  direction: $app-direction;  
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  b,
+  strong {
+    font-weight: bold;
+  }
+}

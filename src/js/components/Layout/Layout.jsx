@@ -1,54 +1,62 @@
 import React, { Component } from 'react'
-import { Button, Icon } from 'antd'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
-import { fetchTasks } from '../../store/actions/todosActions'
+import { bindActionCreators } from 'redux'
+
+import Tasks from '../Tasks/Tasks'
+import Rodal from 'rodal'
+import FormLogin from '../Tasks/Form/Form'
+
+import {saveTask} from '../../store/actions/todosActions'
 
 class Layout extends Component {
 
   constructor(props) {
     super(props)
-    this.onButtonClicked = this.onButtonClicked.bind(this)
+    this.state = {
+      visible: false,
+    }
   }
 
-  onButtonClicked () {
-       console.log(JSON.stringify(this.props.todos))
+  show = () => {
+    this.setState({
+      ...this.state,
+      visible: true
+    })
   }
 
-  componentDidMount () {
-    this.props.uploadTasksFromRemoteServer()
-    
+  hide = () => {
+    this.setState({
+      ...this.state,
+      visible: false
+    })
+  }
+
+  saveTask = (body) => {
+    console.log('save: ' + JSON.stringify(body))
+    this.props.saveTask(body)
+    this.hide()
   }
 
   render() {
     return (
       <React.Fragment >
         <main>
-          <h1>React + Redux Todo list application</h1>
-          <Button 
-            htmlType="button" 
-            shape="circle" 
-            size="large" 
-            type="primaty" 
-            onClick={this.onButtonClicked} > 
-              <Icon type="plus" />
-            </Button>
+          <Tasks onFabClick={this.show}/>
         </main>
+        <Rodal visible={this.state.visible} onClose={this.hide}>
+          <div style={{margin: '1.5rem'}}>
+            <FormLogin afterSubmit={this.saveTask}/>
+          </div>
+        </Rodal>
       </ React.Fragment>
     )
   }
 }
 
-const mapStateToProps = state =>  {
+const mapDisptachToProps = (dispatch) => {
   return {
-    todos : state.todos,
-    filter: state.filter
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    uploadTasksFromRemoteServer: bindActionCreators(fetchTasks, dispatch)    
+    saveTask: bindActionCreators(saveTask, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default connect(null, mapDisptachToProps)(Layout) 
