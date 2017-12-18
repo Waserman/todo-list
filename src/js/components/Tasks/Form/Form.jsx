@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, notification } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -9,10 +9,20 @@ class NormalLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.afterSubmit(values.taskBody)
-        // dispatch new item
-        // close the modal
+        this.props.form.resetFields()
+        notification.open({
+          message: 'Save',
+          description: 'Task was added to your backlog'
+        })
       }
-    });
+    })
+  }
+
+  componentDidMount () {
+    console.log('[Form.jsx] : componentDidMount')
+  }
+  componentWillUnmount () {
+    console.log("[Form.jsx] : componentWillUnmount")
   }
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -20,7 +30,7 @@ class NormalLoginForm extends Component {
       <Form onSubmit={this.handleSubmit}>
         <FormItem>
           {getFieldDecorator('taskBody', {
-            rules: [{ required: true, message: 'you must fill this field!' }],
+            rules: [{ required: true, message: 'you must fill this field!' }]
           })(
             <Input prefix={<Icon type="edit" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="wrtie your task here..." />
           )}

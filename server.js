@@ -47,14 +47,6 @@ app.use('/api', (req, res, next)=>{
   return next()
 },routes)
 
-app.use((err, req, res, next) => {
-  console.log(err.message, err.code, err.name)
-  res.json({
-    status: err.status,
-    message: err.message
-  })
-})
-
 app.listen(process.env.PORT || 9090, (err) => {
   if (!err) {
     console.log('server runing on port ' + process.env.PORT)

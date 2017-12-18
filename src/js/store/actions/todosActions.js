@@ -18,7 +18,6 @@ export const fetchTasks = () => {
 }
 
 export const saveTask = (body) => {
-  debugger
   return async (dispatch) => {
     try {
       const { status } = await axios.post('/api/tasks', qs.stringify({'body': body}))
